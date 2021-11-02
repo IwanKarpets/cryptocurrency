@@ -1,0 +1,34 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+
+.loader,
+.paginate
+{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table tr:hover{
+   cursor: pointer;
+   background-color: #2ecc71;
+}
+.box-shadow{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: transform .5s ease;
+    color: white;
+    font-weight: bold;
+}
+
+.box-shadow:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+
+
+
