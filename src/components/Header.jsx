@@ -1,11 +1,12 @@
 import React,{useEffect, useState} from 'react'
-import {Navbar, Nav, Container, ListGroup, Badge, Button, Table } from 'react-bootstrap'
+import {Table } from 'react-bootstrap'
 import {useSelector, useDispatch} from 'react-redux'
 import {getCryptosHeader, removeFromPortfolio} from '../store/actions/actions'
 import {getCurrency, getPercent} from '../../src/helpers/helpers'
 import {BsFillBriefcaseFill} from 'react-icons/bs'
 import {AiFillDelete} from 'react-icons/ai'
 import {ModalWindow} from './index'
+import {Link} from 'react-router-dom'
 
 
 const Header = () => {
@@ -39,43 +40,40 @@ const Header = () => {
 
     return (
         <>
-            <Navbar bg="primary">
-                <Container>
-                    <Nav className="mx-auto d-flex justify-content-between align-items-center">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <ListGroup horizontal className="d-none d-sm-none d-md-flex">
+            <nav class="navbar bg-primary" >
+                <div className="container">
+                    <div className="mx-auto d-flex justify-content-between align-items-center">
+                        <Link className="navbar-brand" to="/">Home</Link>
+                        <ul className="list-group list-group-horizontal d-none d-sm-none d-md-flex">
                             {popularCrypto.map(popular => (
-                                <ListGroup.Item
+                                <li
                                     key={popular.id}
-                                    as="li"
-                                    className="d-flex py-0 justify-content-between align-items-center"
+                                    className="list-group-item py-0 d-flex justify-content-between align-items-center"
                                 >
                                     <div className="ms-1">
                                         {popular.name}
                                     </div>
-                                    <Badge variant="primary" className="ms-2" pill>
+                                    <span className="badge bg-primary ms-2">
                                         {getCurrency(popular.priceUsd)}
-                                    </Badge>
-                                </ListGroup.Item>
+                                    </span>
+                                </li>
                             ))}
-                        </ListGroup>
-                        <Button
-                            className="d-flex justify-content-between align-items-center py-2 ms-2"
-                            variant="outline-info"
+                        </ul>
+                        <button
+                            className="btn btn-outline-info d-flex justify-content-between align-items-center py-2 ms-2"
                             onClick={() => setActive(true)}
                         >
                             <BsFillBriefcaseFill />
-                            <Badge className="ms-2" bg="secondary">
+                            <span className="badge bg-secondary ms-2">
                                 {getCurrency(portfolioCurrency.reduce((acc, cur) => acc + (cur.priceUsd * cur.quantity), 0))}
-                            </Badge>
-                            <Badge className="ms-2" bg="secondary">
+                            </span>
+                            <span className="badge bg-secondary ms-2">
                                 {getCurrency(difference) || 0}
-                            </Badge>
-                            <Badge className="ms-2" bg="secondary">
+                            </span>
+                            <span className="badge bg-secondary ms-2">
                                 {isNaN(percentChange) ? '0' : getPercent(percentChange)}
-                            </Badge>
-                            <span className="visually-hidden">unread messages</span>
-                        </Button>
+                            </span>
+                        </button>
                         {active &&
                             <ModalWindow
                                 active={active}
@@ -87,7 +85,7 @@ const Header = () => {
 
                                         ?
 
-                                        <Table striped bordered hover size="sm">
+                                        <table className="table table-bordered">
                                             <thead>
                                                 <tr className="text-center">
                                                     <th>ID</th>
@@ -112,16 +110,15 @@ const Header = () => {
                                                     </tr>
                                                 ))}
                                             </tbody>
-                                        </Table>
+                                        </table>
                                         :
-
                                         <h1 className="text-center">Portfolio is empty</h1>
                                 }
                             </ModalWindow>
                         }
-                    </Nav>
-                </Container>
-            </Navbar>
+                    </div>
+                </div>
+            </nav>
         </>
     )
 }
