@@ -1,4 +1,4 @@
-import {SET_CRYPTOS_HEADER, SET_IS_FETCHING_HEADER,SET_FETCH_ERROR_HEADER} from '../../constants/index'
+import {SET_CRYPTOS_HEADER,SET_IS_FETCHING_HEADER,SET_FETCH_ERROR_HEADER} from '../../constants/index'
 
 const defaultState = {
     headerItems: [],
@@ -15,18 +15,18 @@ export default function headerReducer(state = defaultState, action) {
                 headerItems: action.payload,
                     isFetching: false
             }
-            case SET_IS_FETCHING_HEADER:
-                return {
-                    ...state,
-                    isFetching: action.payload
-                }
-                case SET_FETCH_ERROR_HEADER:
-                    return {
-                        ...state,
-                        isFetchError: action.payload
-                    }
-                    default:
-                        return state
+        case SET_IS_FETCHING_HEADER:
+            return {
+                ...state,
+                isFetching: action.payload
+            }
+        case SET_FETCH_ERROR_HEADER:
+            return {
+                ...state,
+                isFetchError: action.payload
+            }
+        default:
+            return state
     }
 }
 

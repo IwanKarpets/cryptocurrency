@@ -1,4 +1,4 @@
-import {SET_IS_FETCHING,SET_FETCH_ERROR,SET_CRYPTO} from '../../constants/index'
+import { SET_IS_FETCHING,SET_FETCH_ERROR,SET_CRYPTO } from '../../constants/index'
 
 const defaultState = {
     crypto: {},
@@ -15,18 +15,18 @@ export default function cryptoReducer(state = defaultState, action) {
                 crypto: action.payload,
                     isFetching: false
             }
-            case SET_IS_FETCHING:
-                return {
-                    ...state,
-                    isFetching: action.payload
-                }
-                case SET_FETCH_ERROR:
-                    return {
-                        ...state,
-                        isFetchError: action.payload
-                    }
-                    default:
-                        return state
+        case SET_IS_FETCHING:
+            return {
+                ...state,
+                isFetching: action.payload
+            }
+        case SET_FETCH_ERROR:
+            return {
+                ...state,
+                isFetchError: action.payload
+            }
+                default:
+                    return state
     }
 }
 

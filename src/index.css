@@ -1,13 +1,13 @@
-*{
-    padding:0;
-    margin:0;
+* {
+    padding: 0;
+    margin: 0;
 }
 
 
-.modal_window{
+.modal_window {
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0, 0 ,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
     top: 0;
     left: 0;
@@ -19,39 +19,35 @@
     justify-content: center;
 }
 
-.modal_window.active{
+.modal_window.active {
     transform: scale(1)
 }
 
 .loader,
-.paginate
-{
+.paginate {
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-table tr:hover{
-   cursor: pointer;
-   background-color: #2ecc71;
+table tr:hover {
+    cursor: pointer;
+    background-color: #2ecc71;
 }
-.box-shadow{
+
+.box-shadow {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: transform .5s ease;
     color: white;
     font-weight: bold;
 }
 
-.box-shadow:hover{
+.box-shadow:hover {
     transform: scale(1.05);
     cursor: pointer;
 }
 
-.link{
+.link {
     cursor: pointer;
 }
-
-
-
-

@@ -16,18 +16,18 @@ export default function historyCryptoReducer(state = defaultState, action) {
                 historyData: action.payload,
                     isFetching: false
             }
-            case SET_IS_FETCHING_HISTORY:
-                return {
-                    ...state,
-                    isFetchingHistory: action.payload
-                }
-                case SET_FETCH_ERROR_HISTORY:
-                    return {
-                        ...state,
-                        isFetchError: action.payload
-                    }
-                    default:
-                        return state
+        case SET_IS_FETCHING_HISTORY:
+            return {
+                ...state,
+                isFetchingHistory: action.payload
+            }
+        case SET_FETCH_ERROR_HISTORY:
+            return {
+                 ...state,
+                isFetchError: action.payload
+            }
+        default:
+            return state
     }
 
 }

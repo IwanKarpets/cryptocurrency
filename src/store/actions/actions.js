@@ -3,7 +3,7 @@ import {setCrypto,setIsFetchingCrypto,setFetchErrorCrypto} from '../reducers/cry
 import {setHistoryData,setIsFetchingHistory,setFetchErrorHistory} from '../reducers/historyReducer'
 import {setFetchErrorHeader,setIsFetchingHeader,setCryptosHeader} from '../reducers/headerReducer'
 import API from '../../../src/utils/API'
-import { ADD_TO_PORTFOLIO,REMOVE_FROM_PORTFOLIO,SET_IS_ADDED} from '../constants/index'
+import {ADD_TO_PORTFOLIO,REMOVE_FROM_PORTFOLIO,SET_IS_ADDED} from '../constants/index'
 
 export const getCryptos = (offset = 0) => async (dispatch) => {
     if (offset === 1) {

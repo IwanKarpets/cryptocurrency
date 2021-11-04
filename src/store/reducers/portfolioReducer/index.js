@@ -1,4 +1,4 @@
-import {ADD_TO_PORTFOLIO,REMOVE_FROM_PORTFOLIO,SET_IS_ADDED,SET_FETCH_ERROR} from '../../constants/index'
+import {ADD_TO_PORTFOLIO,REMOVE_FROM_PORTFOLIO,SET_IS_ADDED} from '../../constants/index'
 
 
 
@@ -16,10 +16,6 @@ export default function portfolioReducer(state = {}, action) {
       return {
         ...state, isAdded: action.payload
       }
-      case SET_FETCH_ERROR:
-        return {
-          ...state, isFetchError: action.payload
-        }
         default:
           return state;
   }

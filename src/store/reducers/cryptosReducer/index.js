@@ -23,9 +23,8 @@ export default function cryptosReducer(state = defaultState, action) {
                     ...state,
                     currentPage: action.payload
                 }
-
-                default:
-                    return state
+            default:
+                return state
     }
 }
 

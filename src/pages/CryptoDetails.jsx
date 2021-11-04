@@ -45,16 +45,14 @@ const CryptoDetails = () => {
 
 
     return (
-
         <div className="container">
             <div className="row">
                 <div className="col-12">
                     <h1 className="text-center d-none d-sm-block">Crypto Detail</h1>
                     <div className="row">
                         <div className="col">
-                            {isAdded && <AlertComponent varinat='success' title='This cryptocurrency already added' />}
+                            {isAdded && <AlertComponent variant='success' title='This cryptocurrency already added' />}
                             {isFetching
-
                                 ?
                                 <Loader />
                                 :
