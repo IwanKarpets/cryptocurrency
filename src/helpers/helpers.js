@@ -1,4 +1,3 @@
-
 export const getCurrency = (n) => new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD'

@@ -1,36 +1,52 @@
 import React from 'react'
-import { Modal, Button } from 'react-bootstrap'
+
 
 const ModalWindow = ({
   active,
-  setActive,
   children,
   title,
   addToPortfolioItems,
-  checkPortfolio
+  checkPortfolio,
+  setActive
 }) => {
 
   return (
-    <>
-      <Modal show={active} onHide={() => setActive(false)}>
-        <Modal.Header>
-          <Modal.Title>{title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {children}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setActive(false)}>
-            Close
-          </Button>
-          {!checkPortfolio && <Button
-            onClick={addToPortfolioItems}
-            variant="primary">
-            Add Portfolio
-          </Button>}
-        </Modal.Footer>
-      </Modal>
-    </>
+    <div className={active ? "modal_window active" : "modal_window"} onClick={() => setActive(false)}>
+      <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="staticBackdropLabel">{title}</h5>
+            <button
+              type="button"
+              className="btn-close"
+              aria-label="Close"
+              onClick={() => setActive(false)}
+            >
+            </button>
+          </div>
+          <div className="modal-body">
+            {children}
+          </div>
+          <div className="modal-footer">
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => setActive(false)}
+            >
+              Close
+            </button>
+            {!checkPortfolio &&
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={addToPortfolioItems}
+              >
+                Add to Portfolio
+              </button>}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

@@ -1,11 +1,11 @@
 import React from 'react'
-import { Alert } from 'react-bootstrap'
+
 
 const AlertComponent = ({ title, variant }) => {
   return (
-    <Alert className="text-center" variant={variant}>
+    <div className={`alert alert-${variant} text-center`} role="alert">
       {title}
-    </Alert>
+    </div>
   )
 }
 

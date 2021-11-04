@@ -4,6 +4,25 @@
 }
 
 
+.modal_window{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0, 0 ,0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    transition: all .5s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal_window.active{
+    transform: scale(1)
+}
+
 .loader,
 .paginate
 {
@@ -26,6 +45,10 @@ table tr:hover{
 
 .box-shadow:hover{
     transform: scale(1.05);
+    cursor: pointer;
+}
+
+.link{
     cursor: pointer;
 }
 

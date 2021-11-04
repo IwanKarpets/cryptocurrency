@@ -1,11 +1,9 @@
 import React from 'react'
-import { Pagination } from 'react-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCurrentPage } from '../store/reducers/cryptosReducer/index'
 import { getCryptos } from "../store/actions/actions"
 
 const Paginate = () => {
-
     const { totalCount, currentPage, limit } = useSelector(state => state.cryptos)
     const pagesCount = Math.ceil(totalCount / limit)
     const dispatch = useDispatch()
@@ -22,16 +20,17 @@ const Paginate = () => {
 
     return (
         <div className="paginate">
-            <Pagination>
-                {pages.map((page, index) => (
-                    <Pagination.Item
-                        key={page} active={currentPage === page}
+            <ul className="pagination">
+                {pages.map((page) => (
+                    <li
+                        className={`page-item ${currentPage === page ? 'active' : ''}`}
+                        key={page}
                         onClick={() => pageHandler(page)}
                     >
-                        {page}
-                    </Pagination.Item>
+                        <span className="page-link link">{page}</span>
+                    </li>
                 ))}
-            </Pagination>
+            </ul>
         </div>
     )
 }

@@ -1,33 +1,44 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {Container, Row, Col, Table, InputGroup,FormControl, Badge} from 'react-bootstrap'
-import {Paginate, AlertComponent, Loader, ModalWindow, } from '../components'
-import {getCryptos, addToPortfolio} from '../store/actions/actions'
-import {getCurrency} from '../../src/helpers/helpers'
-import {useHistory} from 'react-router-dom'
-import {AiFillPlusCircle} from 'react-icons/ai'
- 
+import { Paginate, AlertComponent, Loader, ModalWindow, } from '../components'
+import { getCryptos, addToPortfolio } from '../store/actions/actions'
+import { getCurrency } from '../../src/helpers/helpers'
+import { useHistory } from 'react-router-dom'
+import { AiFillPlusCircle } from 'react-icons/ai'
+
+
 const Main = () => {
     const [quantity, setQuantity] = useState(0)
     const [active, setActive] = useState(false)
+    const [error, setError] = useState(false)
     const [currency, setCurrency] = useState(null)
     const history = useHistory()
     const dispatch = useDispatch()
     const { cryptos, isFetching } = useSelector(state => state.cryptos)
-    const { items, isAdded, isFetchError } = useSelector(state => state.portfolio)
+    const { items, isAdded } = useSelector(state => state.portfolio)
 
     const addToPortfolioItems = (e) => {
-        e.preventDefault()
-        let cryptoCurrObj = { ...currency, quantity }
-        dispatch(addToPortfolio(items, cryptoCurrObj))
-        setQuantity(0)
-        setActive(false)
+        if (quantity === 0 || quantity < 0 || quantity === '') {
+            setError(true)
+            setTimeout(() => {
+                setError(false)
+            }, 5000)
+        } else {
+            e.preventDefault()
+            let cryptoCurrObj = { ...currency, quantity }
+            dispatch(addToPortfolio(items, cryptoCurrObj))
+            setQuantity(0)
+            setActive(false)
+            setError(false)
+        }
     }
+
 
     const currencyHandler = (e, currency) => {
         e.stopPropagation()
         setCurrency(currency)
         setActive(true)
+
     }
 
     useEffect(() => {
@@ -37,15 +48,14 @@ const Main = () => {
 
 
     return (
-        <Container>
-            <Row>
+        <div className="container">
+            <div className="row">
                 {isFetching
                     ?
                     <Loader />
                     :
-                    <Col xs={12} lg={12} md={12}>
-                        {isAdded && <AlertComponent varinat='success' title='This cryptocurrency already added' />}
-                        {isFetchError && <AlertComponent variant='danger' title='Value cannot be equality or less than null' />}
+                    <div className="col-sm-12 col-md-12 col-lg-12">
+                        {isAdded && <AlertComponent variant='success' title='This cryptocurrency already added' />}
                         {currency &&
                             <ModalWindow
                                 active={active}
@@ -54,19 +64,20 @@ const Main = () => {
                                 addToPortfolioItems={addToPortfolioItems}
                                 checkPortfolio={false}
                             >
+                                {error && <AlertComponent variant='danger' title='Value cannot be equality or less than null' />}
                                 <h3 className="d-flex justify-content-between align-items-center">
-                                    <span>{currency.name}</span><Badge bg="primary">{getCurrency(currency.priceUsd)}</Badge>
+                                    <span>{currency.name}</span><span className="badge bg-primary">{isNaN(currency.priceUsd) ? 0 : getCurrency(currency.priceUsd)}</span>
                                 </h3>
-                                <InputGroup className="mb-3">
-                                    <InputGroup.Text>Enter quantity!</InputGroup.Text>
-                                    <FormControl
+                                <div className="input-group mb-3">
+                                    <span className="input-group-text">Enter quantity!</span>
+                                    <input className="form-control"
                                         type="number"
                                         onChange={(e) => setQuantity(e.target.value)}
                                         value={quantity}
                                     />
-                                </InputGroup>
+                                </div>
                             </ModalWindow>}
-                        <Table responsive="sm">
+                        <table className="table">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -88,20 +99,19 @@ const Main = () => {
                                         <td>{item.symbol}</td>
                                         <td>{item.name}</td>
                                         <td>{getCurrency(item.priceUsd)}</td>
-                                        <td>
-                                            <AiFillPlusCircle
-                                                onClick={(e) => currencyHandler(e, item)}
-
-                                            />
+                                        <td
+                                            onClick={(e) => currencyHandler(e, item)}
+                                        >
+                                            <AiFillPlusCircle />
                                         </td>
                                     </tr>
                                 ))}
                             </tbody>
-                        </Table>
+                        </table>
                         <Paginate />
-                    </Col>}
-            </Row>
-        </Container>
+                    </div>}
+            </div>
+        </div>
     )
 }
 

@@ -1,12 +1,11 @@
-import React,{useEffect, useState} from 'react'
-import {Table } from 'react-bootstrap'
-import {useSelector, useDispatch} from 'react-redux'
-import {getCryptosHeader, removeFromPortfolio} from '../store/actions/actions'
-import {getCurrency, getPercent} from '../../src/helpers/helpers'
-import {BsFillBriefcaseFill} from 'react-icons/bs'
-import {AiFillDelete} from 'react-icons/ai'
-import {ModalWindow} from './index'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { getCryptosHeader, removeFromPortfolio } from '../store/actions/actions'
+import { getCurrency, getPercent } from '../../src/helpers/helpers'
+import { BsFillBriefcaseFill } from 'react-icons/bs'
+import { AiFillDelete } from 'react-icons/ai'
+import { ModalWindow } from './index'
+import { Link } from 'react-router-dom'
 
 
 const Header = () => {
@@ -35,12 +34,9 @@ const Header = () => {
         dispatch(getCryptosHeader())
     }, [dispatch])
 
-
-
-
     return (
         <>
-            <nav class="navbar bg-primary" >
+            <nav className="navbar bg-primary" >
                 <div className="container">
                     <div className="mx-auto d-flex justify-content-between align-items-center">
                         <Link className="navbar-brand" to="/">Home</Link>
@@ -74,48 +70,44 @@ const Header = () => {
                                 {isNaN(percentChange) ? '0' : getPercent(percentChange)}
                             </span>
                         </button>
-                        {active &&
-                            <ModalWindow
-                                active={active}
-                                setActive={setActive}
-                                checkPortfolio={true}
-                            >
-                                {
-                                    items.length > 0
-
-                                        ?
-
-                                        <table className="table table-bordered">
-                                            <thead>
-                                                <tr className="text-center">
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Quantity</th>
-                                                    <th>Price</th>
-                                                    <th>Delete</th>
+                        <ModalWindow
+                            active={active}
+                            setActive={setActive}
+                            checkPortfolio={true}
+                        >
+                            {
+                                items.length > 0
+                                    ?
+                                    <table className="table table-bordered">
+                                        <thead>
+                                            <tr className="text-center">
+                                                <th>ID</th>
+                                                <th>Name</th>
+                                                <th>Quantity</th>
+                                                <th>Price</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {items.map(item => (
+                                                <tr className="text-center" key={item.id}>
+                                                    <td>{item.id}</td>
+                                                    <td>{item.name}</td>
+                                                    <td>{item.quantity}</td>
+                                                    <td>{getCurrency(item.priceUsd)}</td>
+                                                    <td
+                                                        onClick={() => dispatch(removeFromPortfolio(items, item.id))}
+                                                    >
+                                                        <AiFillDelete />
+                                                    </td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                {items.map(item => (
-                                                    <tr className="text-center" key={item.id}>
-                                                        <td>{item.id}</td>
-                                                        <td>{item.name}</td>
-                                                        <td>{item.quantity}</td>
-                                                        <td>{getCurrency(item.priceUsd)}</td>
-                                                        <td
-                                                            onClick={() => dispatch(removeFromPortfolio(items, item.id))}
-                                                        >
-                                                            <AiFillDelete />
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                        :
-                                        <h1 className="text-center">Portfolio is empty</h1>
-                                }
-                            </ModalWindow>
-                        }
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                    :
+                                    <h1 className="text-center">Portfolio is empty</h1>
+                            }
+                        </ModalWindow>
                     </div>
                 </div>
             </nav>

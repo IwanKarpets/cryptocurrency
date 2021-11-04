@@ -3,7 +3,7 @@ import {setCrypto,setIsFetchingCrypto,setFetchErrorCrypto} from '../reducers/cry
 import {setHistoryData,setIsFetchingHistory,setFetchErrorHistory} from '../reducers/historyReducer'
 import {setFetchErrorHeader,setIsFetchingHeader,setCryptosHeader} from '../reducers/headerReducer'
 import API from '../../../src/utils/API'
-import { ADD_TO_PORTFOLIO,REMOVE_FROM_PORTFOLIO,SET_IS_ADDED,SET_FETCH_ERROR} from '../constants/index'
+import { ADD_TO_PORTFOLIO,REMOVE_FROM_PORTFOLIO,SET_IS_ADDED} from '../constants/index'
 
 export const getCryptos = (offset = 0) => async (dispatch) => {
     if (offset === 1) {
@@ -70,21 +70,7 @@ export const addToPortfolio = (items, currency) => (dispatch) => {
     });
 
     if (!productAlreadyInCart) {
-        if (currency.quantity === 0 || currency.quantity < 0 || currency.quantity === '') {
-            dispatch({
-                type: SET_FETCH_ERROR,
-                payload: true
-            })
-            setTimeout(() => {
-                dispatch({
-                    type: SET_FETCH_ERROR,
-                    payload: false
-                })
-            }, 5000)
-        } else {
-            items.push(currency);
-        }
-
+        items.push(currency);
     }
     localStorage.setItem("portfolioItems", JSON.stringify(items));
     dispatch({
