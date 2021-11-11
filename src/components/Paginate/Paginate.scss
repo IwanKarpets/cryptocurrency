@@ -1,0 +1,52 @@
+@import '../../index.scss';
+
+.pagination {
+    margin-top: 15px;
+
+    .pagination__block {
+        &--list {
+            @include flexible();
+            gap: 2px;
+        }
+
+        .list__item {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            border: 2px solid $bg-primary;
+            font-size: 20px;
+            @include flexible();
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all .5 ease;
+
+            &:hover {
+                background-color: $bg-primary;
+                border: 1px solid white;
+                color: white;
+                opacity: 0.5;
+            }
+
+            &.active {
+                background-color: $bg-primary;
+                border: 1px solid white;
+                color: white;
+            }
+        }
+
+    }
+}
+
+
+@include query(mobile) {
+    .pagination {
+        display: none;
+    }
+
+}
+
+@include query(tablet) {
+    .pagination {
+        display: block;
+    }
+}
