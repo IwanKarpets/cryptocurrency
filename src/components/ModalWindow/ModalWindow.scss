@@ -1,0 +1,74 @@
+@import '../../index.scss';
+
+.modal__window {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    transition: all .5s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.active {
+        transform: scale(1)
+    }
+}
+
+.modal__inner {
+    background: #ffffff;
+    width: 100%;
+    max-width: 600px;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.modal__top {
+    display: flex;
+    align-items: center;
+    background-color: #eeeeee;
+}
+
+.modal__title {
+    flex-grow: 1;
+    padding: 0 5px;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+.modal__content {
+    padding: 0 3px;
+    line-height: 1.5;
+}
+
+.modal__bottom {
+    text-align: center;
+    padding: 0 5px 5px 5px;
+}
+
+.modal__button {
+    display: inline-block;
+    padding: 6px 12px;
+    background: $bg-primary;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.modal__button:not(:last-child) {
+    margin-right: 10px;
+}
+
+.modal__button:hover {
+    background: $bg-primary;
+    opacity: 0.5;
+}

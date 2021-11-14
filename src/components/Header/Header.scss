@@ -1,0 +1,107 @@
+@import '../../index.scss';
+
+
+header {
+  width: 100%;
+  background-color: $bg-primary;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.navbar {
+  &__container {
+    width: 100%;
+    @include flexible();
+    gap: 10px;
+  }
+}
+
+.list__popular {
+  @include flexible();
+
+  &--item {
+    background-color: white;
+    @include flexible();
+    border-radius: 3px;
+    padding: 2px 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  &--item:not(:last-child) {
+    margin-right: 5px;
+  }
+
+  .item__name {
+    margin-right: 5px;
+  }
+
+  .item__price {
+    background-color: $bg-primary;
+    border-radius: 3px;
+    padding: 5px 3px;
+    color: white;
+  }
+
+}
+
+.btn__portfolio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  border-radius: 4px;
+  border: 2px solid $bg-secondary;
+  padding: 5px 10px;
+  background: $bg-primary;
+  cursor: pointer;
+  transition: all .5 ease;
+
+  i {
+    font-size: 20px;
+    color: $bg-secondary;
+  }
+
+  &--summ {
+    @include button-mixins();
+  }
+
+  &--diff {
+    @include button-mixins();
+  }
+
+  &--percent {
+    @include button-mixins();
+  }
+
+}
+
+.btn__portfolio:hover {
+  background: #2980b9;
+}
+
+.table__modal {
+  margin-top: 10px;
+}
+
+.block__portfolio--empty {
+  width: 90%;
+  text-align: center;
+  margin: 100px auto;
+  font-size: 40px;
+}
+
+@include query(mobile) {
+  .list__popular {
+    display: none;
+  }
+}
+
+@include query(tablet) {
+  .list__popular {
+    display: flex;
+  }
+}
