@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { getCrypto, getHistoryData, addToPortfolio } from '../../store/actions/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCurrency } from '../../helpers/helpers'
-import { ModalWindow, AlertComponent, Loader, LineChart } from '../../components'
+import { ModalWindow, AlertComponent, Loader, LineChart, CardComponent } from '../../components'
 import './CryptoDetail.scss'
 
 
@@ -57,42 +57,14 @@ const CryptoDetails = () => {
                             <Loader />
                             :
                             <div className="crypto__info-cards">
-                                <div className="card">
-                                    <div className="card__title">Name</div>
-                                    <div className="card__line"></div>
-                                    <div className="card__description">{crypto.name}</div>
-                                </div>
-                                <div className="card">
-                                    <div className="card__title">Rank</div>
-                                    <div className="card__line"></div>
-                                    <div className="card__description">{crypto.rank}</div>
-                                </div>
-                                <div className="card">
-                                    <div className="card__title">Symbol</div>
-                                    <div className="card__line"></div>
-                                    <div className="card__description">{crypto.symbol}</div>
-                                </div>
-                                <div className="card">
-                                    <div className="card__title">Price</div>
-                                    <div className="card__line"></div>
-                                    <div className="card__description">
-                                        {isNaN(crypto.priceUsd) ? 0 : getCurrency(crypto.priceUsd)}
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <div className="card__title">Supply</div>
-                                    <div className="card__line"></div>
-                                    <div className="card__description">
-                                        {isNaN(crypto.supply) ? 0 : Number(crypto.supply).toFixed(2)}
-                                    </div>
-                                </div>
-                                <div className="card">
-                                    <div className="card__title">Name</div>
-                                    <div className="card__line"></div>
-                                    <div className="card__description">
-                                        <a className="card__description-link" href={crypto.explorer}>Link</a>
-                                    </div>
-                                </div>
+                                <CardComponent title="Name" text={crypto.name}/>
+                                <CardComponent title="Rank" text={crypto.rank}/>
+                                <CardComponent title="Symbol" text={crypto.symbol}/>
+                                <CardComponent title="Price" text={isNaN(crypto.priceUsd) ? 0 : getCurrency(crypto.priceUsd)}/>
+                                <CardComponent title="Supply" text={isNaN(crypto.supply) ? 0 : Number(crypto.supply).toFixed(2)}/>
+                                <CardComponent title="Name">
+                                    <a className="card__description-link" href={crypto.explorer}>Link</a>
+                                </CardComponent>
                             </div>
                         }
                         <div className="crypto__button-container">
