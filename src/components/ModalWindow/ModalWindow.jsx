@@ -11,7 +11,7 @@ const ModalWindow = ({
 }) => {
 
   return (
-    <div className={active ? "modal__window active" : "modal__window"} onClick={() => setActive(false)}>
+    <div className={active ? "modal__window  modal__window--active" : "modal__window"} onClick={() => setActive(false)}>
       <div
         class="modal__inner"
         onClick={(e) => e.stopPropagation()}

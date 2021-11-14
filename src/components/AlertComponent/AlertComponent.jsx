@@ -4,7 +4,7 @@ import './AlertComponent.scss'
 
 const AlertComponent = ({ title, variant }) => {
   return (
-    <div class={`alert ${variant}-alert`}>
+    <div class={`alert alert--${variant}`}>
       <h3 class="alert__text">{title}</h3>
     </div>
   )

@@ -67,16 +67,16 @@ const Main = () => {
                             >
                                 {error && <AlertComponent variant='danger' title='Value cannot be equality or less than null' />}
                                 <h3 className="currency__info">
-                                    <span className="currency__info--name">
+                                    <span className="currency__info-name">
                                         {currency.name}
                                     </span>
-                                    <span className="currency__info--name">
+                                    <span className="currency__info-name">
                                         {isNaN(currency.priceUsd) ? 0 : getCurrency(currency.priceUsd)}
                                     </span>
                                 </h3>
                                 <div className="block__enter">
-                                    <span className="enter__text">Enter Quantity</span>
-                                    <input className="enter__input"
+                                    <span className="block__enter-text">Enter Quantity</span>
+                                    <input className="block__enter-input"
                                         type="number"
                                         onChange={(e) => setQuantity(e.target.value)}
                                         value={quantity}
@@ -85,33 +85,34 @@ const Main = () => {
                                 </div>
                             </ModalWindow>}
                         <div className="table__container">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Rank</th>
-                                        <th>Symbol</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Add</th>
+                            <table className="table__info">
+                                <thead className="table__info-head">
+                                    <tr className="table__info-headrow">
+                                        <th className="table__info-headcell">ID</th>
+                                        <th className="table__info-headcell">Rank</th>
+                                        <th className="table__info-headcell">Symbol</th>
+                                        <th className="table__info-headcell">Name</th>
+                                        <th className="table__info-headcell">Price</th>
+                                        <th className="table__info-headcell">Add</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className="table__info-body">
                                     {cryptos.map(item => (
                                         <tr
+                                            className="table__info-bodyrow"
                                             key={item.id}
                                             onClick={() => history.push(`/crypto/${item.id}`)}
                                         >
-                                            <td>{item.id}</td>
-                                            <td>{item.rank}</td>
-                                            <td>{item.symbol}</td>
-                                            <td>{item.name}</td>
-                                            <td>{getCurrency(item.priceUsd)}</td>
-                                            <td
+                                            <td className="table__info-bodycell">{item.id}</td>
+                                            <td className="table__info-bodycell">{item.rank}</td>
+                                            <td className="table__info-bodycell">{item.symbol}</td>
+                                            <td className="table__info-bodycell">{item.name}</td>
+                                            <td className="table__info-bodycell">{getCurrency(item.priceUsd)}</td>
+                                            <td  
                                                 onClick={(e) => currencyHandler(e, item)}
                                             >
                                                 <i className="fas fa-plus-circle"></i>
-                                            </td>
+                                            </td >
                                         </tr>
                                     ))}
                                 </tbody>

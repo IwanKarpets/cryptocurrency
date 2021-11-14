@@ -4,18 +4,18 @@ import './Loader.scss'
 const Loader = () => {
     return (
         <div className="lds__default">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
+            <div className="lds__default-element"></div>
         </div>
 
     )

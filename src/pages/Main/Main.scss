@@ -4,7 +4,7 @@
     margin-top: 10px;
 }
 
-table {
+.table__info {
     border-collapse: collapse;
     margin: 0 auto;
     font-size: 14px;
@@ -14,46 +14,49 @@ table {
     transition: all .5s ease;
 
 
-    thead tr {
+    .table__info-head .table__info-headrow{
         background-color: $bg-primary;
         color: #ffffff;
         text-align: left;
     }
 
-    th,
-    td {
+    
+    .table__info-headrow,
+    .table__info-headcell,
+    .table__info-bodyrow,
+    .table__info-bodycell {
         padding: 11px 15px;
     }
 
-    tbody tr {
+    .table__info-body  .table__info-bodyrow {
         border-bottom: 1px solid #dddddd;
         font-size: 20px;
     }
 
-    tbody tr:nth-of-type(even) {
+    .table__info-body .table__info-bodyrow:nth-of-type(even) {
         background-color: #f3f3f3;
     }
 
-    tbody tr:last-of-type {
+    .table__info-body .table__info-bodyrow:last-of-type {
         border-bottom: 2px solid $bg-primary;
     }
 
 
-    tbody tr:hover {
+    .table__info-body .table__info-bodyrow:hover {
         font-weight: bold;
         color: white;
         background-color: $bg-primary;
         cursor: pointer;
     }
 
-    tbody tr:nth-of-type(even):hover {
+    .table__info-body .table__info-bodyrow:nth-of-type(even):hover {
         font-weight: bold;
         color: white;
         background-color: $bg-primary;
         cursor: pointer;
     }
 
-    td i {
+    .fa-plus-circle {
         font-size: 20px;
     }
 
@@ -74,7 +77,7 @@ table {
     flex-direction: column;
     gap: 20px;
 
-    .enter__text {
+    &-text {
         width: 90%;
         background: $bg-primary;
         color: white;
@@ -85,7 +88,7 @@ table {
         @include flexible();
     }
 
-    .enter__input {
+    &-input {
         width: 90%;
         height: 40px;
         padding: 0;

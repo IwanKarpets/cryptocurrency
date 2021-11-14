@@ -49,14 +49,14 @@ const CryptoDetails = () => {
         <section className="crypto">
             <div className="container">
                 <div className="crypto__info">
-                    <div className="crypto__info--container">
-                        <h1 className="crypto__info--title">Crypto Detail</h1>
+                    <div className="crypto__info-container">
+                        <h1 className="crypto__info-title">Crypto Detail</h1>
                         {isAdded && <AlertComponent variant='success' title='This cryptocurrency already added' />}
                         {isFetching
                             ?
                             <Loader />
                             :
-                            <div className="crypto__info--cards">
+                            <div className="crypto__info-cards">
                                 <div className="card">
                                     <div className="card__title">Name</div>
                                     <div className="card__line"></div>
@@ -90,12 +90,12 @@ const CryptoDetails = () => {
                                     <div className="card__title">Name</div>
                                     <div className="card__line"></div>
                                     <div className="card__description">
-                                        <a className="card__description--link" href={crypto.explorer}>Link</a>
+                                        <a className="card__description-link" href={crypto.explorer}>Link</a>
                                     </div>
                                 </div>
                             </div>
                         }
-                        <div className="crypto__button--container">
+                        <div className="crypto__button-container">
                             <button
                                 className="crypto__button"
                                 onClick={() => history.goBack('/')}
@@ -118,16 +118,16 @@ const CryptoDetails = () => {
                         >
                             {error && <AlertComponent variant='danger' title='Value cannot be equality or less than null' />}
                             <h3 className="currency__info">
-                                <span className="currency__info--name">
+                                <span className="currency__info-name">
                                     {crypto.name}
                                 </span>
-                                <span className="currency__info--name">
+                                <span className="currency__info-name">
                                     {isNaN(crypto.priceUsd) ? 0 : getCurrency(crypto.priceUsd)}
                                 </span>
                             </h3>
                             <div className="block__enter">
-                                <span className="enter__text">Enter Quantity</span>
-                                <input className="enter__input"
+                                <span className="block__enter-text">Enter Quantity</span>
+                                <input className="block__enter-input"
                                     type="number"
                                     onChange={(e) => setQuantity(e.target.value)}
                                     value={quantity}
@@ -136,7 +136,7 @@ const CryptoDetails = () => {
                             </div>
                         </ModalWindow>}
                     </div>
-                    <div className="crypto__info--chart">
+                    <div className="chart">
                         {
                             isFetchingHistory
                                 ?
@@ -146,7 +146,7 @@ const CryptoDetails = () => {
                                     <h1 className="chart__title">
                                         Chart
                                     </h1>
-                                    <div className="chart">
+                                    <div className="chart__container">
                                         <LineChart coinHistory={historyData} />
                                     </div>
                                 </>

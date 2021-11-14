@@ -3,11 +3,11 @@
 // here i added styles
 .crypto {
     .crypto__info {
-        &--title {
+        &-title {
             text-align: center;
         }
 
-        &--cards {
+        &-cards {
             @include flexible();
             gap: 4px;
         }
@@ -45,14 +45,14 @@
 
     }
 
-    .card__description--link {
+    .card__description-link {
         text-decoration: none;
         color: white;
     }
 
 }
 
-.crypto__button--container {
+.crypto__button-container {
     width: 400px;
     margin: 7px auto;
     @include flexible();
@@ -75,8 +75,8 @@
 
 }
 
-.crypto__info--chart {
-    .chart__title {
+.chart{
+    &__title {
         text-align: center;
 
     }
@@ -84,25 +84,25 @@
 
 
 @include query(mobile) {
-    .crypto__info--container {
-        .crypto__info--cards {
+    .crypto__info-container {
+        .crypto__info-cards {
             display: none;
         }
     }
 
-    .crypto__info--title {
+    .crypto__info-title {
         display: none;
     }
 }
 
 @include query(tablet) {
-    .crypto__info--container {
-        .crypto__info--cards {
+    .crypto__info-container {
+        .crypto__info-cards {
             display: flex;
         }
     }
 
-    .crypto__info--title {
+    .crypto__info-title {
         display: block;
     }
 }
