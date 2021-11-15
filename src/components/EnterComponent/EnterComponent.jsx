@@ -4,7 +4,7 @@ import { getCurrency } from '../../helpers/helpers'
 
 const EnterComponent = ({name, price, setQuantity, quantity}) => {
     return (
-        <div>
+        <div className="currency__add">
             <h3 className="currency__info">
                 <span className="currency__info-name">
                     {name}

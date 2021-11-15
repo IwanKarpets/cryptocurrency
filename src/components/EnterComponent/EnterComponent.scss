@@ -1,35 +1,39 @@
 @import '../../index.scss';
 
 //styles for children modal window
-.currency__info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
+.currency__add{
+    .currency__info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+    
+    .block__enter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+    
+        &-text {
+            width: 90%;
+            background: $bg-primary;
+            color: white;
+            height: 50px;
+            padding: 0;
+            font-weight: bold;
+            border-radius: 5px;
+            @include flexible();
+        }
+    
+        &-input {
+            width: 90%;
+            height: 40px;
+            padding: 0;
+            border-radius: 5px;
+        }
+    }
+    
 }
 
-.block__enter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    gap: 20px;
-
-    &-text {
-        width: 90%;
-        background: $bg-primary;
-        color: white;
-        height: 50px;
-        padding: 0;
-        font-weight: bold;
-        border-radius: 5px;
-        @include flexible();
-    }
-
-    &-input {
-        width: 90%;
-        height: 40px;
-        padding: 0;
-        border-radius: 5px;
-    }
-}
