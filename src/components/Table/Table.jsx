@@ -3,7 +3,7 @@ import './Table.scss'
 import { useHistory } from 'react-router-dom'
 import { getCurrency } from '../../helpers/helpers'
 
-const Table = ({data, modalHandler, icon}) => {
+const Table = ({ data, modalHandler, icon }) => {
     const history = useHistory()
     return (
         <div className="table__container">
@@ -30,11 +30,26 @@ const Table = ({data, modalHandler, icon}) => {
                             <td className="table__info-bodycell">{item.symbol}</td>
                             <td className="table__info-bodycell">{item.name}</td>
                             <td className="table__info-bodycell">{getCurrency(item.priceUsd)}</td>
-                            <td
-                                onClick={(e) => modalHandler(e, item)}
-                            >
-                                {icon ? icon : <i className="fas fa-plus-circle"></i>}
-                            </td >
+                            {
+                                icon
+                                    ?
+
+                                    <td
+                                        className="table__info-bodycell"
+                                        onClick={(e) => modalHandler(e, data, item.id)}
+                                    >
+                                        {icon}
+                                    </td>
+
+                                    :
+
+                                    <td
+                                        className="table__info-bodycell"
+                                        onClick={(e) => modalHandler(e, item)}
+                                    >
+                                        <i className="fas fa-plus-circle"></i>
+                                    </td>
+                            }
                         </tr>
                     ))}
                 </tbody>

@@ -72,7 +72,7 @@ const CryptoDetails = () => {
                                 className="crypto__button"
                                 onClick={() => history.goBack('/')}
                             >
-                                Back
+                                    Back
                             </button>
                             <button
                                 className="crypto__button"
