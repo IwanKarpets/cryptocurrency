@@ -22,10 +22,10 @@ const Paginate = () => {
     return (
         <div className="pagination">
             <div className="pagination__block">
-                <ul className="pagination__block--list">
+                <ul className="pagination__block_list">
                     {pages.map((page) => (
                         <li
-                            className={`list__item ${currentPage === page ? 'active' : ''}`}
+                            className={currentPage === page ? 'pagination__block_item  pagination__block_item--active' : 'pagination__block_item'}
                             key={page}
                             onClick={() => pageHandler(page)}
                         >

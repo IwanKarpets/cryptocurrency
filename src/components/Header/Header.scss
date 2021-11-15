@@ -21,7 +21,7 @@ header {
 .list__popular {
   @include flexible();
 
-  &--item {
+  &-item {
     background-color: white;
     @include flexible();
     border-radius: 3px;
@@ -31,7 +31,7 @@ header {
     font-weight: bold;
   }
 
-  &--item:not(:last-child) {
+  &-item:not(:last-child) {
     margin-right: 5px;
   }
 
@@ -65,33 +65,90 @@ header {
     color: $bg-secondary;
   }
 
-  &--summ {
+  &-summ {
     @include button-mixins();
   }
 
-  &--diff {
+  &-diff {
     @include button-mixins();
   }
 
-  &--percent {
+  &-percent {
     @include button-mixins();
+  }
+
+  &:hover {
+    background: #2980b9;
   }
 
 }
 
-.btn__portfolio:hover {
-  background: #2980b9;
-}
 
 .table__modal {
-  margin-top: 10px;
+  border-collapse: collapse;
+  margin: 10px auto;
+  font-size: 14px;
+  font-family: sans-serif;
+  min-width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  transition: all .5s ease;
+
+   &-headrow{
+      background-color: $bg-primary;
+      color: #ffffff;
+      text-align: left;
+  }
+
+  &-row,
+  &-headcell,
+  &-head,
+  &-bodycell {
+      padding: 11px 15px;
+  }
+
+  &-body &-row {
+      border-bottom: 1px solid #dddddd;
+      font-size: 20px;
+  }
+
+  &-body &-row:nth-of-type(even) {
+      background-color: #f3f3f3;
+  }
+
+  &-body &-row:last-of-type {
+      border-bottom: 2px solid $bg-primary;
+  }
+
+
+  &-body &-row:hover {
+      font-weight: bold;
+      color: white;
+      background-color: $bg-primary;
+      cursor: pointer;
+  }
+
+  &-body &-row:nth-of-type(even):hover {
+      font-weight: bold;
+      color: white;
+      background-color: $bg-primary;
+      cursor: pointer;
+  }
+
+  &-icon{
+    font-size: 20px;
+  }
+
 }
 
-.block__portfolio--empty {
-  width: 90%;
-  text-align: center;
-  margin: 100px auto;
-  font-size: 40px;
+
+.block__portfolio{
+    &--empty{
+      width: 90%;
+      text-align: center;
+      margin: 100px auto;
+      font-size: 40px;
+
+    } 
 }
 
 @include query(mobile) {

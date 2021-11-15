@@ -11,18 +11,18 @@ const ModalWindow = ({
 }) => {
 
   return (
-    <div className={active ? "modal__window active" : "modal__window"} onClick={() => setActive(false)}>
+    <div className={active ? "modal__window  modal__window--active" : "modal__window"} onClick={() => setActive(false)}>
       <div
-        class="modal__inner"
+        className="modal__inner"
         onClick={(e) => e.stopPropagation()}
       >
-        <div class="modal__top">
-          <div class="modal__title">{title}</div>
+        <div className="modal__top">
+          <div className="modal__title">{title}</div>
         </div>
-        <div class="modal__content">
+        <div className="modal__content">
           {children}
         </div>
-        <div class="modal__bottom">
+        <div className="modal__bottom">
           <button
             type="button"
             className="modal__button"

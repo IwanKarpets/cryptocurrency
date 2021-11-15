@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getCryptosHeader, removeFromPortfolio } from '../../store/actions/actions'
 import { getCurrency, getPercent } from '../../helpers/helpers'
 import { AiFillDelete } from 'react-icons/ai'
-import { ModalWindow } from '../index'
+import { ModalWindow, Table } from '../index'
 import './Header.scss'
 
 
@@ -29,89 +29,72 @@ const Header = () => {
     let percentChange = ((portfolioCurrencySum * 100 / portfolioItemsSum) - 100) / 100;
     let popularCrypto = headerItems.slice(0, 3)
 
+    const removeItemPortfolio = (e, data, id) => {
+        e.stopPropagation()
+        dispatch(removeFromPortfolio(data, id))
+    }
+
     useEffect(() => {
         dispatch(getCryptosHeader())
     }, [dispatch])
 
     return (
         <header className="header">
-            <header className="header__inner">
-                <div className="container">
-                    <nav className="navbar">
-                        <div className="navbar__container">
-                            <ul className="list__popular">
-                                {popularCrypto.map(popular => (
-                                    <li
-                                        key={popular.id}
-                                        className="list__popular--item">
-                                        <span className="item__name">
-                                            {popular.name}
-                                        </span>
-                                        <span className="item__price">
-                                            {getCurrency(popular.priceUsd)}
-                                        </span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <button
-                                className="btn__portfolio"
-                                onClick={() => setActive(true)}
-                            >
-                                <span className="btn__portfolio--icon">
-                                    <i className="fas fa-briefcase"></i>
-                                </span>
-                                <span className="btn__portfolio--summ">
-                                    {getCurrency(portfolioCurrency.reduce((acc, cur) => acc + (cur.priceUsd * cur.quantity), 0))}
-                                </span>
-                                <span className="btn__portfolio--diff">
-                                    {getCurrency(difference) || 0}
-                                </span>
-                                <span className="btn__portfolio--percent">
-                                    {isNaN(percentChange) ? '0' : getPercent(percentChange)}
-                                </span>
-                            </button>
-                            <ModalWindow
-                                active={active}
-                                setActive={setActive}
-                                checkPortfolio={true}
-                            >
-                                {
-                                    items.length > 0
-                                        ?
-                                        <table className="table__modal">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Name</th>
-                                                    <th>Quantity</th>
-                                                    <th>Price</th>
-                                                    <th>Delete</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {items.map(item => (
-                                                    <tr key={item.id}>
-                                                        <td>{item.id}</td>
-                                                        <td>{item.name}</td>
-                                                        <td>{item.quantity}</td>
-                                                        <td>{getCurrency(item.priceUsd)}</td>
-                                                        <td
-                                                            onClick={() => dispatch(removeFromPortfolio(items, item.id))}
-                                                        >
-                                                            <AiFillDelete />
-                                                        </td>
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                        :
-                                        <h1 className="block__portfolio--empty">Portfolio is empty</h1>
-                                }
-                            </ModalWindow>
-                        </div>
-                    </nav>
-                </div>
-            </header>
+            <div className="container">
+                <nav className="navbar">
+                    <div className="navbar__container">
+                        <ul className="list__popular">
+                            {popularCrypto.map(popular => (
+                                <li
+                                    key={popular.id}
+                                    className="list__popular-item">
+                                    <span className="item__name">
+                                        {popular.name}
+                                    </span>
+                                    <span className="item__price">
+                                        {getCurrency(popular.priceUsd)}
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+                        <button
+                            className="btn__portfolio"
+                            onClick={() => setActive(true)}
+                        >
+                            <span className="btn__portfolio-icon">
+                                <i className="fas fa-briefcase"></i>
+                            </span>
+                            <span className="btn__portfolio-summ">
+                                {getCurrency(portfolioCurrency.reduce((acc, cur) => acc + (cur.priceUsd * cur.quantity), 0))}
+                            </span>
+                            <span className="btn__portfolio-diff">
+                                {getCurrency(difference) || 0}
+                            </span>
+                            <span className="btn__portfolio-percent">
+                                {isNaN(percentChange) ? '0' : getPercent(percentChange)}
+                            </span>
+                        </button>
+                        <ModalWindow
+                            active={active}
+                            setActive={setActive}
+                            checkPortfolio={true}
+                        >
+                            {
+                                items.length > 0
+                                    ?
+
+                                    <Table
+                                        data={items}
+                                        icon={<AiFillDelete />}
+                                        modalHandler={removeItemPortfolio}
+                                    />
+                                    :
+                                    <h1 className="block__portfolio block__portfolio--empty">Portfolio is empty</h1>
+                            }
+                        </ModalWindow>
+                    </div>
+                </nav>
+            </div>
         </header>
     )
 }

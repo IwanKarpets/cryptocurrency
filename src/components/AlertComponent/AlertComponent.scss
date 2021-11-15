@@ -6,7 +6,7 @@
     border-radius: 5px;
     box-shadow: 0 0 15px 5px #ccc;
 
-    .alert__text {
+    &__text {
         text-align: center;
         font-size: 20px;
     }
@@ -14,7 +14,7 @@
 
 @mixin alert($name, $bgColor) {
     $accentColor: darken($bgColor, 50);
-
+    
     .#{$name} {
         background-color:#{$bgColor};
         border-left: 5px solid $accentColor;
@@ -22,5 +22,5 @@
     }
 }
 
-@include alert(success-alert, #a8f0c6);
-@include alert(danger-alert, #f7a7a3);
+@include alert(alert--success, #a8f0c6);
+@include alert(alert--danger, #f7a7a3);

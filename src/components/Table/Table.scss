@@ -1,0 +1,59 @@
+@import '../../index.scss';
+
+.table__info {
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 14px;
+    font-family: sans-serif;
+    min-width: 100%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    transition: all .5s ease;
+
+
+    .table__info-head .table__info-headrow{
+        background-color: $bg-primary;
+        color: #ffffff;
+        text-align: left;
+    }
+
+    
+    .table__info-headrow,
+    .table__info-headcell,
+    .table__info-bodyrow,
+    .table__info-bodycell {
+        padding: 11px 15px;
+    }
+
+    .table__info-body  .table__info-bodyrow {
+        border-bottom: 1px solid #dddddd;
+        font-size: 20px;
+    }
+
+    .table__info-body .table__info-bodyrow:nth-of-type(even) {
+        background-color: #f3f3f3;
+    }
+
+    .table__info-body .table__info-bodyrow:last-of-type {
+        border-bottom: 2px solid $bg-primary;
+    }
+
+
+    .table__info-body .table__info-bodyrow:hover {
+        font-weight: bold;
+        color: white;
+        background-color: $bg-primary;
+        cursor: pointer;
+    }
+
+    .table__info-body .table__info-bodyrow:nth-of-type(even):hover {
+        font-weight: bold;
+        color: white;
+        background-color: $bg-primary;
+        cursor: pointer;
+    }
+
+    .fa-plus-circle {
+        font-size: 20px;
+    }
+
+}
