@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { getCrypto, getHistoryData, addToPortfolio } from '../../store/actions/actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCurrency } from '../../helpers/helpers'
-import { ModalWindow, AlertComponent, Loader, LineChart, CardComponent } from '../../components'
+import { ModalWindow, AlertComponent, Loader, LineChart, CardComponent, EnterComponent } from '../../components'
 import './CryptoDetail.scss'
 
 
@@ -89,23 +89,12 @@ const CryptoDetails = () => {
                             checkPortfolio={false}
                         >
                             {error && <AlertComponent variant='danger' title='Value cannot be equality or less than null' />}
-                            <h3 className="currency__info">
-                                <span className="currency__info-name">
-                                    {crypto.name}
-                                </span>
-                                <span className="currency__info-name">
-                                    {isNaN(crypto.priceUsd) ? 0 : getCurrency(crypto.priceUsd)}
-                                </span>
-                            </h3>
-                            <div className="block__enter">
-                                <span className="block__enter-text">Enter Quantity</span>
-                                <input className="block__enter-input"
-                                    type="number"
-                                    onChange={(e) => setQuantity(e.target.value)}
-                                    value={quantity}
-                                    placeholder="Enter quantity"
+                            <EnterComponent 
+                                name={crypto.name}
+                                price={crypto.priceUsd}
+                                setQuantity={setQuantity}
+                                quantity={quantity}
                                 />
-                            </div>
                         </ModalWindow>}
                     </div>
                     <div className="chart">

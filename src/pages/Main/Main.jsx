@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Paginate, AlertComponent, Loader, ModalWindow, } from '../../components'
+import { Paginate, AlertComponent, Loader, ModalWindow, EnterComponent} from '../../components'
 import { getCryptos, addToPortfolio } from '../../store/actions/actions'
 import { getCurrency } from '../../helpers/helpers'
 import { useHistory } from 'react-router-dom'
@@ -66,23 +66,12 @@ const Main = () => {
                                 checkPortfolio={false}
                             >
                                 {error && <AlertComponent variant='danger' title='Value cannot be equality or less than null' />}
-                                <h3 className="currency__info">
-                                    <span className="currency__info-name">
-                                        {currency.name}
-                                    </span>
-                                    <span className="currency__info-name">
-                                        {isNaN(currency.priceUsd) ? 0 : getCurrency(currency.priceUsd)}
-                                    </span>
-                                </h3>
-                                <div className="block__enter">
-                                    <span className="block__enter-text">Enter Quantity</span>
-                                    <input className="block__enter-input"
-                                        type="number"
-                                        onChange={(e) => setQuantity(e.target.value)}
-                                        value={quantity}
-                                        placeholder="Enter quantity"
-                                    />
-                                </div>
+                                <EnterComponent
+                                    name={currency.name}
+                                    price={currency.priceUsd}
+                                    setQuantity={setQuantity}
+                                    quantity={quantity}
+                                />
                             </ModalWindow>}
                         <div className="table__container">
                             <table className="table__info">
